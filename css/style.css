@@ -1,0 +1,353 @@
+/* =========================
+   GLOBAL
+========================= */
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f5f7fb;
+    color: #212529;
+}
+
+.section {
+    padding: 80px 0;
+}
+
+.section-title {
+    text-align: center;
+    font-weight: 700;
+    margin-bottom: 40px;
+}
+
+
+/* =========================
+   HERO
+========================= */
+
+.hero-section {
+    min-height: 650px;
+    display: flex;
+    align-items: center;
+    padding: 80px 0;
+    background: linear-gradient(
+        135deg,
+        #eef4ff,
+        #ffffff
+    );
+}
+
+.hero-icon {
+    font-size: 70px;
+    margin-bottom: 15px;
+}
+
+.hero-section h1 {
+    color: #172554;
+}
+
+.student-card {
+    max-width: 600px;
+    margin: 35px auto 0;
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+
+/* =========================
+   INFORMATION CARDS
+========================= */
+
+.info-card {
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    height: 100%;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.06);
+}
+
+.info-card h4 {
+    margin-bottom: 15px;
+    color: #1d4ed8;
+}
+
+
+/* =========================
+   SOLVER
+========================= */
+
+.solver-section {
+    background: #eef2f7;
+}
+
+.control-panel,
+.visualization-panel {
+    background: white;
+    border-radius: 15px;
+    padding: 25px;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.07);
+}
+
+.control-panel {
+    position: sticky;
+    top: 80px;
+}
+
+.algorithm-box {
+    background: #eff6ff;
+    border-left: 4px solid #2563eb;
+    padding: 15px;
+    border-radius: 5px;
+}
+
+.button-group {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+}
+
+
+/* =========================
+   PUZZLE BOARD
+========================= */
+
+.puzzle-board {
+    width: 210px;
+    height: 210px;
+    margin: 15px auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 5px;
+    padding: 5px;
+    background: #1e293b;
+    border-radius: 10px;
+}
+
+.small-board {
+    width: 160px;
+    height: 160px;
+}
+
+.tile {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: #3b82f6;
+    color: white;
+
+    font-size: 30px;
+    font-weight: bold;
+
+    border-radius: 7px;
+
+    transition:
+        transform 0.35s ease,
+        background 0.35s ease;
+}
+
+.small-board .tile {
+    font-size: 22px;
+}
+
+.tile.blank {
+    background: #e2e8f0;
+    color: transparent;
+}
+
+
+/* =========================
+   STATS
+========================= */
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin-top: 20px;
+}
+
+.stat-card {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    padding: 15px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.stat-card span {
+    display: block;
+    font-size: 13px;
+    color: #64748b;
+}
+
+.stat-card strong {
+    display: block;
+    font-size: 25px;
+    margin-top: 5px;
+}
+
+
+/* =========================
+   METRICS
+========================= */
+
+.metric-box {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    padding: 15px;
+    text-align: center;
+}
+
+.metric-box span {
+    display: block;
+    color: #64748b;
+}
+
+.metric-box strong {
+    font-size: 28px;
+}
+
+
+/* =========================
+   SEARCH LISTS
+========================= */
+
+.search-lists {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.state-list {
+    height: 180px;
+    overflow-y: auto;
+
+    background: #0f172a;
+    color: #e2e8f0;
+
+    padding: 12px;
+
+    border-radius: 8px;
+
+    font-family: monospace;
+    font-size: 12px;
+}
+
+.state-item {
+    padding: 7px;
+    margin-bottom: 5px;
+    border-bottom: 1px solid #334155;
+}
+
+
+/* =========================
+   SOLUTION
+========================= */
+
+.solution-path {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    padding: 15px;
+    background: #f8fafc;
+    border-radius: 10px;
+    min-height: 100px;
+}
+
+.solution-step {
+    text-align: center;
+}
+
+.solution-step p {
+    margin: 5px 0;
+    font-size: 13px;
+}
+
+
+/* =========================
+   FORMULA
+========================= */
+
+.formula {
+    background: #eff6ff;
+    border: 1px solid #bfdbfe;
+
+    padding: 15px;
+    margin: 15px 0;
+
+    border-radius: 8px;
+
+    font-family: monospace;
+    font-size: 18px;
+    text-align: center;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+.footer {
+    background: #111827;
+    color: white;
+    padding: 30px 0;
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 992px) {
+
+    .control-panel {
+        position: static;
+        margin-bottom: 25px;
+    }
+
+}
+
+@media (max-width: 768px) {
+
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .search-lists {
+        grid-template-columns: 1fr;
+    }
+
+    .button-group {
+        grid-template-columns: 1fr;
+    }
+
+    .puzzle-board {
+        width: 190px;
+        height: 190px;
+    }
+
+}
+
+@media (max-width: 576px) {
+
+    .hero-section h1 {
+        font-size: 2rem;
+    }
+
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .small-board {
+        width: 150px;
+        height: 150px;
+    }
+
+}

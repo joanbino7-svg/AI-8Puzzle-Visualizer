@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>A* 8-Puzzle Visualizer</title>
+
+    <!-- Bootstrap -->
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+    >
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<!-- ================= NAVBAR ================= -->
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+    <div class="container">
+
+        <a class="navbar-brand fw-bold" href="#home">
+            🧩 A* 8-Puzzle Visualizer
+        </a>
+
+        <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+        >
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#home">Home</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#solver">Solver</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#comparison">Comparison</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#algorithm">Algorithm</a>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+<!-- ================= HOME ================= -->
+
+<section id="home" class="hero-section">
+
+    <div class="container text-center">
+
+        <div class="hero-icon">🧩</div>
+
+        <h1 class="display-4 fw-bold">
+            Interactive 8-Puzzle Problem Solver
+        </h1>
+
+        <p class="lead">
+            Visualizing A* Search using heuristic functions
+        </p>
+
+        <div class="student-card">
+
+            <h4>Artificial Intelligence Digital Assignment</h4>
+
+            <hr>
+
+            <p>
+                <strong>Course:</strong>
+                Artificial Intelligence
+            </p>
+
+            <p>
+                <strong>Assignment:</strong>
+                Interactive 8-Puzzle Problem Solver
+            </p>
+
+            <p>
+                <strong>Student Name:</strong>
+                Joan Elizabeth Bino
+            </p>
+
+            <p>
+                <strong>Register Number:</strong>
+                24BCE2670
+            </p>
+
+            <p>
+                <strong>Assigned Algorithm:</strong>
+                A* Search
+            </p>
+
+        </div>
+
+        <a href="#solver" class="btn btn-primary btn-lg mt-3">
+            Start Solving
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- ================= INTRODUCTION ================= -->
+
+<section class="section">
+
+    <div class="container">
+
+        <h2 class="section-title">
+            About the 8-Puzzle
+        </h2>
+
+        <p>
+            The 8-Puzzle is a classical artificial intelligence problem
+            consisting of eight numbered tiles and one blank space arranged
+            on a 3 × 3 board. The objective is to move the tiles into a
+            specified goal configuration.
+        </p>
+
+        <p>
+            The problem can be represented as a state-space search problem.
+            Each arrangement of the tiles represents a state, while moving
+            the blank tile generates a successor state.
+        </p>
+
+        <div class="row mt-4">
+
+            <div class="col-md-4">
+                <div class="info-card">
+                    <h4>State</h4>
+                    <p>
+                        A particular arrangement of the eight tiles and
+                        blank space.
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="info-card">
+                    <h4>Actions</h4>
+                    <p>
+                        Moving the blank tile up, down, left or right.
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="info-card">
+                    <h4>Goal</h4>
+                    <p>
+                        Reach the specified goal arrangement of the puzzle.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= SOLVER ================= -->
+
+<section id="solver" class="section solver-section">
+
+    <div class="container">
+
+        <h2 class="section-title">
+            A* Puzzle Solver
+        </h2>
+
+        <div class="row">
+
+            <!-- INPUT PANEL -->
+
+            <div class="col-lg-4">
+
+                <div class="control-panel">
+
+                    <h4>Puzzle Input</h4>
+
+                    <p class="text-muted">
+                        Enter numbers from 0–8. Use 0 for the blank tile.
+                    </p>
+
+                    <label class="form-label">
+                        Initial State
+                    </label>
+
+                    <input
+                        type="text"
+                        id="initialInput"
+                        class="form-control"
+                        value="2 8 3 1 6 4 7 0 5"
+                    >
+
+                    <label class="form-label mt-3">
+                        Goal State
+                    </label>
+
+                    <input
+                        type="text"
+                        id="goalInput"
+                        class="form-control"
+                        value="1 2 3 8 0 4 7 6 5"
+                    >
+
+                    <button
+                        id="randomBtn"
+                        class="btn btn-outline-primary w-100 mt-3"
+                    >
+                        🎲 Generate Random Puzzle
+                    </button>
+
+                    <hr>
+
+                    <h5>Algorithm</h5>
+
+                    <div class="algorithm-box">
+                        <strong>A* Search</strong>
+                        <br>
+                        <small>
+                            f(n) = g(n) + h(n)
+                        </small>
+                    </div>
+
+                    <label class="form-label mt-3">
+                        Heuristic
+                    </label>
+
+                    <select id="heuristicSelect" class="form-select">
+
+                        <option value="manhattan">
+                            Manhattan Distance
+                        </option>
+
+                        <option value="misplaced">
+                            Misplaced Tiles
+                        </option>
+
+                    </select>
+
+                    <div class="button-group mt-4">
+
+                        <button
+                            id="runBtn"
+                            class="btn btn-success"
+                        >
+                            ▶ Run
+                        </button>
+
+                        <button
+                            id="pauseBtn"
+                            class="btn btn-warning"
+                        >
+                            ⏸ Pause
+                        </button>
+
+                        <button
+                            id="resumeBtn"
+                            class="btn btn-info"
+                        >
+                            ▶ Resume
+                        </button>
+
+                        <button
+                            id="stepBtn"
+                            class="btn btn-primary"
+                        >
+                            ⏭ Next Step
+                        </button>
+
+                        <button
+                            id="prevBtn"
+                            class="btn btn-secondary"
+                        >
+                            ⏮ Previous
+                        </button>
+
+                        <button
+                            id="resetBtn"
+                            class="btn btn-danger"
+                        >
+                            ↻ Reset
+                        </button>
+
+                    </div>
+
+                    <label class="form-label mt-4">
+                        Animation Speed
+                    </label>
+
+                    <input
+                        type="range"
+                        id="speedRange"
+                        class="form-range"
+                        min="100"
+                        max="1500"
+                        value="700"
+                        step="100"
+                    >
+
+                    <div class="text-center">
+                        <span id="speedLabel">
+                            700 ms
+                        </span>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- PUZZLE PANEL -->
+
+            <div class="col-lg-8">
+
+                <div class="visualization-panel">
+
+                    <div class="row text-center">
+
+                        <div class="col-md-4">
+
+                            <h5>Initial State</h5>
+
+                            <div
+                                id="initialBoard"
+                                class="puzzle-board small-board"
+                            ></div>
+
+                        </div>
+
+                        <div class="col-md-4">
+
+                            <h5>Current State</h5>
+
+                            <div
+                                id="currentBoard"
+                                class="puzzle-board"
+                            ></div>
+
+                        </div>
+
+                        <div class="col-md-4">
+
+                            <h5>Goal State</h5>
+
+                            <div
+                                id="goalBoard"
+                                class="puzzle-board small-board"
+                            ></div>
+
+                        </div>
+
+                    </div>
+
+
+                    <hr class="my-4">
+
+
+                    <!-- SEARCH INFORMATION -->
+
+                    <h4>Search Process</h4>
+
+                    <div class="stats-grid">
+
+                        <div class="stat-card">
+                            <span>Current Step</span>
+                            <strong id="stepCounter">0</strong>
+                        </div>
+
+                        <div class="stat-card">
+                            <span>Nodes Generated</span>
+                            <strong id="nodesGenerated">0</strong>
+                        </div>
+
+                        <div class="stat-card">
+                            <span>Nodes Expanded</span>
+                            <strong id="nodesExpanded">0</strong>
+                        </div>
+
+                        <div class="stat-card">
+                            <span>Search Depth</span>
+                            <strong id="searchDepth">0</strong>
+                        </div>
+
+                    </div>
+
+
+                    <div class="row mt-4">
+
+                        <div class="col-md-4">
+
+                            <div class="metric-box">
+                                <span>g(n)</span>
+                                <strong id="gValue">0</strong>
+                            </div>
+
+                        </div>
+
+                        <div class="col-md-4">
+
+                            <div class="metric-box">
+                                <span>h(n)</span>
+                                <strong id="hValue">0</strong>
+                            </div>
+
+                        </div>
+
+                        <div class="col-md-4">
+
+                            <div class="metric-box">
+                                <span>f(n)</span>
+                                <strong id="fValue">0</strong>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- FRONTIER -->
+
+                    <div class="search-lists mt-4">
+
+                        <div>
+
+                            <h5>Frontier / Open List</h5>
+
+                            <div
+                                id="frontierList"
+                                class="state-list"
+                            >
+                                Empty
+                            </div>
+
+                        </div>
+
+                        <div>
+
+                            <h5>Explored / Closed List</h5>
+
+                            <div
+                                id="exploredList"
+                                class="state-list"
+                            >
+                                Empty
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- SOLUTION -->
+
+                    <div
+                        id="solutionMessage"
+                        class="alert alert-secondary mt-4"
+                    >
+                        Enter a puzzle and press Run.
+                    </div>
+
+                    <h4 class="mt-4">
+                        Solution Path
+                    </h4>
+
+                    <div
+                        id="solutionPath"
+                        class="solution-path"
+                    >
+                        No solution calculated yet.
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= COMPARISON ================= -->
+
+<section id="comparison" class="section">
+
+    <div class="container">
+
+        <h2 class="section-title">
+            Algorithm Comparison
+        </h2>
+
+        <p>
+            The table below provides a conceptual comparison of commonly
+            used search algorithms for the 8-Puzzle problem.
+        </p>
+
+        <div class="table-responsive">
+
+            <table class="table table-bordered table-hover text-center">
+
+                <thead class="table-dark">
+
+                    <tr>
+                        <th>Algorithm</th>
+                        <th>Type</th>
+                        <th>Complete</th>
+                        <th>Optimal</th>
+                        <th>Uses Heuristic</th>
+                        <th>Memory</th>
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    <tr>
+                        <td>BFS</td>
+                        <td>Uninformed</td>
+                        <td>Yes</td>
+                        <td>Yes*</td>
+                        <td>No</td>
+                        <td>High</td>
+                    </tr>
+
+                    <tr>
+                        <td>DFS</td>
+                        <td>Uninformed</td>
+                        <td>No*</td>
+                        <td>No</td>
+                        <td>No</td>
+                        <td>Low</td>
+                    </tr>
+
+                    <tr>
+                        <td>DLS</td>
+                        <td>Uninformed</td>
+                        <td>No*</td>
+                        <td>No</td>
+                        <td>No</td>
+                        <td>Low</td>
+                    </tr>
+
+                    <tr>
+                        <td>IDDLS</td>
+                        <td>Uninformed</td>
+                        <td>Yes</td>
+                        <td>Yes*</td>
+                        <td>No</td>
+                        <td>Medium</td>
+                    </tr>
+
+                    <tr>
+                        <td>GBFS</td>
+                        <td>Informed</td>
+                        <td>No*</td>
+                        <td>No</td>
+                        <td>Yes</td>
+                        <td>High</td>
+                    </tr>
+
+                    <tr class="table-primary">
+                        <td><strong>A*</strong></td>
+                        <td><strong>Informed</strong></td>
+                        <td><strong>Yes</strong></td>
+                        <td><strong>Yes*</strong></td>
+                        <td><strong>Yes</strong></td>
+                        <td><strong>High</strong></td>
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+        <small>
+            * Depends on assumptions such as finite branching,
+            admissible heuristics and uniform step costs.
+        </small>
+
+    </div>
+
+</section>
+
+
+<!-- ================= ALGORITHM ================= -->
+
+<section id="algorithm" class="section algorithm-section">
+
+    <div class="container">
+
+        <h2 class="section-title">
+            A* Search Algorithm
+        </h2>
+
+        <div class="row">
+
+            <div class="col-md-6">
+
+                <div class="info-card">
+
+                    <h4>Description</h4>
+
+                    <p>
+                        A* is an informed search algorithm that combines the
+                        actual cost of reaching a state with an estimated
+                        cost from that state to the goal.
+                    </p>
+
+                    <h4>Evaluation Function</h4>
+
+                    <div class="formula">
+                        f(n) = g(n) + h(n)
+                    </div>
+
+                    <ul>
+                        <li><strong>g(n):</strong> Cost from start to node</li>
+                        <li><strong>h(n):</strong> Estimated cost to goal</li>
+                        <li><strong>f(n):</strong> Total estimated solution cost</li>
+                    </ul>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-md-6">
+
+                <div class="info-card">
+
+                    <h4>Working Principle</h4>
+
+                    <ol>
+                        <li>Insert the initial state into the open list.</li>
+                        <li>Select the node with the smallest f(n).</li>
+                        <li>Expand the selected node.</li>
+                        <li>Generate its valid successor states.</li>
+                        <li>Calculate g(n), h(n), and f(n).</li>
+                        <li>Continue until the goal is reached.</li>
+                    </ol>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="row mt-4">
+
+            <div class="col-md-6">
+
+                <div class="info-card">
+
+                    <h4>Misplaced Tiles</h4>
+
+                    <p>
+                        Counts the number of tiles that are not in their
+                        correct goal positions.
+                    </p>
+
+                    <div class="formula">
+                        h(n) = Number of misplaced tiles
+                    </div>
+
+                    <p>
+                        The blank tile is not included in the calculation.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-md-6">
+
+                <div class="info-card">
+
+                    <h4>Manhattan Distance</h4>
+
+                    <p>
+                        Calculates the total horizontal and vertical distance
+                        of each tile from its goal position.
+                    </p>
+
+                    <div class="formula">
+                        h(n) = Σ(|row - goalRow| + |column - goalColumn|)
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="row mt-4">
+
+            <div class="col-md-4">
+
+                <div class="info-card">
+
+                    <h4>Advantages</h4>
+
+                    <ul>
+                        <li>Efficient informed search</li>
+                        <li>Can find optimal solutions</li>
+                        <li>Uses domain knowledge</li>
+                        <li>Manhattan distance performs well for 8-Puzzle</li>
+                    </ul>
+
+                </div>
+
+            </div>
+
+            <div class="col-md-4">
+
+                <div class="info-card">
+
+                    <h4>Limitations</h4>
+
+                    <ul>
+                        <li>Can consume significant memory</li>
+                        <li>Performance depends on heuristic</li>
+                        <li>Large state spaces can be expensive</li>
+                    </ul>
+
+                </div>
+
+            </div>
+
+            <div class="col-md-4">
+
+                <div class="info-card">
+
+                    <h4>Complexity</h4>
+
+                    <p>
+                        <strong>Time:</strong> O(b<sup>d</sup>)
+                    </p>
+
+                    <p>
+                        <strong>Space:</strong> O(b<sup>d</sup>)
+                    </p>
+
+                    <p>
+                        <strong>Complete:</strong> Yes, under standard
+                        finite-branching and positive-cost assumptions.
+                    </p>
+
+                    <p>
+                        <strong>Optimal:</strong> Yes, when using an
+                        admissible/consistent heuristic.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer class="footer">
+
+    <div class="container text-center">
+
+        <p class="mb-1">
+            Artificial Intelligence Digital Assignment
+        </p>
+
+        <p class="mb-0">
+            A* 8-Puzzle Visualizer | 24BCE2670
+        </p>
+
+    </div>
+
+</footer>
+
+
+<!-- Bootstrap JS -->
+
+<script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
+</script>
+
+
+<!-- Project JavaScript -->
+
+<script src="js/heuristics.js"></script>
+<script src="js/puzzle.js"></script>
+<script src="js/astar.js"></script>
+<script src="js/visualization.js"></script>
+
+</body>
+</html>
