@@ -112,7 +112,9 @@ Visit the live deployed site: **https://joanbino7-svg.github.io/AI-8Puzzle-Visua
 
 ## Screenshots
 
-> *(Insert screenshots of the Home page, Solver page with a solved puzzle, and Comparison page here before final submission.)*
+> <img width="1346" height="609" alt="image" src="https://github.com/user-attachments/assets/cb22c730-2ced-4c70-b63d-0ff57bb6fc21" />
+<img width="1346" height="609" alt="image" src="https://github.com/user-attachments/assets/756458f9-dc57-424e-afb2-3a09ce5b5e4e" />
+<img width="1346" height="609" alt="image" src="https://github.com/user-attachments/assets/9fac3d9c-95dc-4449-915e-27f3f543c73b" />
 
 ---
 
