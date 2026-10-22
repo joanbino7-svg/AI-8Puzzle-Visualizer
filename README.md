@@ -113,8 +113,9 @@ Visit the live deployed site: **https://joanbino7-svg.github.io/AI-8Puzzle-Visua
 ## Screenshots
 
 > <img width="1346" height="609" alt="image" src="https://github.com/user-attachments/assets/cb22c730-2ced-4c70-b63d-0ff57bb6fc21" />
-<img width="1346" height="609" alt="image" src="https://github.com/user-attachments/assets/756458f9-dc57-424e-afb2-3a09ce5b5e4e" />
-<img width="1346" height="609" alt="image" src="https://github.com/user-attachments/assets/9fac3d9c-95dc-4449-915e-27f3f543c73b" />
+<img width="1342" height="554" alt="image" src="https://github.com/user-attachments/assets/bf5f0f17-629d-4345-9537-fd650741dbfc" />
+<img width="1335" height="542" alt="image" src="https://github.com/user-attachments/assets/4f6cc64d-bd11-4735-9df3-55ae487a7c10" />
+
 
 ---
 
